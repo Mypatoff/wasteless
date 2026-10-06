@@ -1,0 +1,64 @@
+{{define "content"}}
+<section class="month-nav card" aria-label="Month">
+	<button type="button" id="month-prev" class="btn" aria-label="Previous month">&larr; Previous</button>
+	<span id="month-label" class="month-label"></span>
+	<button type="button" id="month-next" class="btn" aria-label="Next month">Next &rarr;</button>
+</section>
+
+<section class="entries-toolbar">
+	<div class="chip-group" id="kind-filter" role="group" aria-label="Filter entries">
+		<button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+		<button type="button" class="chip" data-filter="saving" aria-pressed="false">Saved</button>
+		<button type="button" class="chip" data-filter="spend" aria-pressed="false">Spent</button>
+		<button type="button" class="chip" data-filter="wasted" aria-pressed="false">Wasted only</button>
+	</div>
+	<button type="button" id="add-entry-btn" class="btn primary">+ Add</button>
+</section>
+
+<section class="card">
+	<div id="entries-list"></div>
+</section>
+
+<div id="entry-modal" class="modal-backdrop" hidden>
+	<div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+		<h2 id="modal-title">Add entry</h2>
+		<form id="entry-form" novalidate>
+			<input type="hidden" id="entry-id" value="">
+
+			<div class="chip-group" id="kind-toggle" role="group" aria-label="Kind">
+				<button type="button" class="chip" data-kind="saving" aria-pressed="false">Saving</button>
+				<button type="button" class="chip" data-kind="spend" aria-pressed="true">Spend</button>
+			</div>
+
+			<label for="field-amount">Amount (so'm)</label>
+			<input type="text" id="field-amount" inputmode="numeric" autocomplete="off" required>
+			<p class="field-error" id="error-amount"></p>
+
+			<label for="field-category">Category</label>
+			<input type="text" id="field-category" list="category-options" autocomplete="off">
+			<datalist id="category-options"></datalist>
+			<p class="field-error" id="error-category"></p>
+
+			<label for="field-date">Date</label>
+			<input type="date" id="field-date" required>
+			<p class="field-error" id="error-date"></p>
+
+			<label for="field-note">Note</label>
+			<input type="text" id="field-note" autocomplete="off">
+			<p class="field-error" id="error-note"></p>
+
+			<label class="checkbox-label" id="wasted-row" hidden>
+				<input type="checkbox" id="field-wasted">
+				Wasted
+			</label>
+
+			<div class="modal-actions">
+				<button type="button" id="modal-cancel" class="btn">Cancel</button>
+				<button type="submit" id="modal-save" class="btn primary">Save</button>
+			</div>
+		</form>
+	</div>
+</div>
+{{end}}
+
+{{define "scripts"}}<script src="/static/entries.js"></script>{{end}}

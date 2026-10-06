@@ -1,0 +1,48 @@
+{{define "content"}}
+<section class="month-nav card" aria-label="Month">
+	<button type="button" id="month-prev" class="btn" aria-label="Previous month">&larr; Previous</button>
+	<span id="month-label" class="month-label"></span>
+	<button type="button" id="month-next" class="btn" aria-label="Next month">Next &rarr;</button>
+</section>
+
+<section class="stat-grid" aria-label="Summary">
+	<div class="card stat stat-saved">
+		<div class="stat-label">Saved</div>
+		<div class="stat-value" id="stat-saved">&mdash;</div>
+	</div>
+	<div class="card stat stat-spent">
+		<div class="stat-label">Spent</div>
+		<div class="stat-value" id="stat-spent">&mdash;</div>
+	</div>
+	<div class="card stat stat-wasted">
+		<div class="stat-label">Wasted</div>
+		<div class="stat-value" id="stat-wasted">&mdash;</div>
+	</div>
+	<div class="card stat stat-amber">
+		<div class="stat-label">Wasted share of spending</div>
+		<div class="stat-value" id="stat-wasted-share">&mdash;</div>
+	</div>
+	<div class="card stat stat-saved">
+		<div class="stat-label">Total saved, all time</div>
+		<div class="stat-value" id="stat-total-saved">&mdash;</div>
+	</div>
+</section>
+
+<section class="card">
+	<h2>Wasted by category</h2>
+	<div id="category-bars"></div>
+</section>
+
+<section class="card chart-card">
+	<div class="chart-card-head">
+		<h2>Saved vs wasted</h2>
+		<div class="chip-group" id="chart-period" role="group" aria-label="Chart period">
+			<button type="button" class="chip" data-months="6" aria-pressed="true">6 months</button>
+			<button type="button" class="chip" data-months="12" aria-pressed="false">12 months</button>
+		</div>
+	</div>
+	<div id="chart-container"></div>
+</section>
+{{end}}
+
+{{define "scripts"}}<script src="/static/dashboard.js"></script>{{end}}

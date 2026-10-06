@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WasteLess</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<header class="nav">
+		<div class="nav-inner">
+			<a class="brand" href="/">WasteLess</a>
+			<nav aria-label="Main">
+				<a href="/"{{if eq .Active "dashboard"}} class="active" aria-current="page"{{end}}>Dashboard</a>
+				<a href="/entries"{{if eq .Active "entries"}} class="active" aria-current="page"{{end}}>Entries</a>
+				<a href="/api/backup">Download backup</a>
+			</nav>
+		</div>
+	</header>
+
+	<main class="container">
+		{{template "content" .}}
+	</main>
+
+	<div id="error-bar" class="error-bar" role="alert" hidden>
+		<span id="error-text"></span>
+		<button type="button" id="error-close" aria-label="Dismiss error">&times;</button>
+	</div>
+
+	<script src="/static/app.js"></script>
+	{{block "scripts" .}}{{end}}
+</body>
+</html>
